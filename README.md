@@ -9,7 +9,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 方式一
 
 在项目build.gradle文件中添加：
-```bash
+```
 compile 'com.daoyixun:ipsmap:latest.release'
 ```
 
@@ -18,7 +18,7 @@ compile 'com.daoyixun:ipsmap:latest.release'
 1.将*.aar包(名称可能有变化)放入libs目录下
 
 2.在根目录的gradle 中添加
-```bash
+```
 allprojects {
     repositories {
         flatDir {
@@ -29,7 +29,7 @@ allprojects {
 ```
 
 3.在项目的gradle 中添加
-```bash
+```
 dependencies {
     compile (name:'ipsmap', ext:'aar')
 }
@@ -37,7 +37,7 @@ dependencies {
 
 ## 加入权限
 导入IpsmapSDK后需要
-```bash
+```
     <!-- sdk 使用需要的权限 -->
     <!-- if use wifi indoor positioning -->
     <uses-permission android:name="android.permission.INTERNET" />
