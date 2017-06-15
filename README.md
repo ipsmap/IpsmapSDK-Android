@@ -73,12 +73,12 @@ dependencies {
 初始化
 
 在Application 的onCreate 方法中进行初始化
-```objective-c
+```
     IpsMapSDK.init(context, IPSMAP_APP_KEY);
 ```
 
 启动地图
-```objective-c
+```
 Intent intent = new Intent(MainActivity.this, IpsMapActivity.class);
 intent.putExtra("map_id", map_id);
 intent.putExtra("request_target_id", request_target_id); 
@@ -86,7 +86,7 @@ startActivity(intent);
 ```
 
 定位监听
-```objective-c
+```
 ipsClient = new IpsClient(context, map_id); 
 ipsClient.registerLocationListener(new IpsLocationListener() {
     @Override
@@ -104,7 +104,7 @@ ipsClient.start();
 ```
 
 activity 结束时调用
-```objective-c
+```
 @Override
 protected void onDestroy() {
     super.onDestroy();
@@ -113,7 +113,7 @@ protected void onDestroy() {
 ```
 
 ## 混淆
-```objective-c
+```
 -dontwarn com.iflytek.**
 -keep class com.iflytek.**{*;}
 -keep public class com.sails.engine.patterns.IconPatterns
