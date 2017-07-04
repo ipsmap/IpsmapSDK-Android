@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'maven'
 
 android {
     compileSdkVersion 25
@@ -31,7 +32,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
-    compile 'com.ipsmap:ipsmap:1.1.1'
+    compile 'com.github.ipsmap:IpsmapSDK-Android:v1.1.1'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     //compile (name:'ipsmap', ext:'aar')
 }
