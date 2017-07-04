@@ -4,6 +4,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 
 [![license](https://img.shields.io/hexpm/l/plug.svg)](https://raw.githubusercontent.com/typ0520/fastdex/master/LICENSE)
 [![Download](https://api.bintray.com/packages/xun/maven/com.ipsmap/images/download.svg) ](https://bintray.com/xun/maven/com.ipsmap/_latestVersion)
+[![API](https://img.shields.io/badge/API-18%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=18)
 
 ## 获取AppKey和MapId
 请联系dev@ipsmap.com
