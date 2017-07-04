@@ -8,33 +8,11 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 请联系dev@ipsmap.com
 
 ## 添加依赖
-方式一
 
-在项目build.gradle文件中添加：
 ```
-compile 'com.daoyixun:ipsmap:latest.release'
-```
-
-方式二
-
-1.将*.aar包(名称可能有变化)放入libs目录下
-
-2.在根目录的gradle 中添加
-```
-allprojects {
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
-}
-```
-
-3.在项目的gradle 中添加
-```
-dependencies {
-    compile (name:'ipsmap', ext:'aar')
-}
+compile ('com.daoyixun:ipsmap:1.1.1', {
+        exclude group: 'com.android.support'
+    })
 ```
 
 ## 加入权限
