@@ -13,7 +13,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 ## 添加依赖
 
 ```
-compile ('com.daoyixun:ipsmap:1.1.1', {
+compile ('com.daoyixun:ipsmap:1.2', {
         exclude group: 'com.android.support'
     })
 ```
@@ -58,14 +58,16 @@ compile ('com.daoyixun:ipsmap:1.1.1', {
 在Application 的onCreate 方法中进行初始化
 ```
     IpsMapSDK.init(context, IPSMAP_APP_KEY);
+    或
+    IpsMapSDK.init(new IpsMapSDK.Configuration.Builder(context)
+                .appKey(Constants.IPSMAP_APP_KEY)
+                .enableShowShareDialog(true)
+                .build());
 ```
 
 启动地图
 ```
-Intent intent = new Intent(MainActivity.this, IpsMapActivity.class);
-intent.putExtra("map_id", map_id);
-intent.putExtra("request_target_id", request_target_id); 
-startActivity(intent);
+IpsMapSDK.openIpsMapActivity(context, map_id);
 ```
 
 定位监听
@@ -97,6 +99,8 @@ protected void onDestroy() {
 
 ## 混淆
 ```
+-dontwarn com.baidu.**
+-keep class com.baidu.** {*;}
 -dontwarn com.iflytek.**
 -keep class com.iflytek.**{*;}
 -keep public class com.sails.engine.patterns.IconPatterns
