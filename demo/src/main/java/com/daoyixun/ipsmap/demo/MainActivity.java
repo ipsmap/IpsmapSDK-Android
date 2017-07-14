@@ -14,7 +14,8 @@ import android.widget.Toast;
 import com.daoyixun.ipsmap.IpsClient;
 import com.daoyixun.ipsmap.IpsLocation;
 import com.daoyixun.ipsmap.IpsLocationListener;
-import com.daoyixun.ipsmap.IpsMapActivity;
+import com.daoyixun.ipsmap.IpsMapSDK;
+import com.daoyixun.ipsmap.ui.activity.IpsMapActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -42,9 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openIpsMap(View view){
-        Intent intent = new Intent(MainActivity.this, IpsMapActivity.class);
-        intent.putExtra("map_id", Constants.IPSMAP_MAP_ID);
-        startActivity(intent);
+        IpsMapSDK.openIpsMapActivity(this, Constants.IPSMAP_MAP_ID);
     }
 
     public void startLocation(View view){
