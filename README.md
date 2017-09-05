@@ -68,6 +68,8 @@ compile ('com.daoyixun:ipsmap:0.0.2.3', {
 启动地图
 ```
 IpsMapSDK.openIpsMapActivity(context, map_id);
+或
+IpsMapSDK.openIpsMapActivity(context, map_id, target_id);
 ```
 
 定位监听
