@@ -13,7 +13,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 ## 添加依赖
 
 ```
-compile ('com.daoyixun:ipsmap:1.2.5', {
+compile ('com.daoyixun:ipsmap:0.0.2.3', {
         exclude group: 'com.android.support'
     })
 ```
@@ -61,7 +61,7 @@ compile ('com.daoyixun:ipsmap:1.2.5', {
     或
     IpsMapSDK.init(new IpsMapSDK.Configuration.Builder(context)
                 .appKey(Constants.IPSMAP_APP_KEY)
-                .enableShowShareDialog(true)
+                .shareToWechatListener(this)
                 .build());
 ```
 
@@ -105,3 +105,5 @@ protected void onDestroy() {
 -keep class com.iflytek.**{*;}
 -keep public class com.sails.engine.patterns.IconPatterns
 ```
+
+微信分享以及复制跳转请参考demo

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="bugtags-lib-2.3.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/8c2f91413d2b6c950404d66f87a7b0943af63b39/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/8c2f91413d2b6c950404d66f87a7b0943af63b39/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bugtags.library/bugtags-lib/2.3.1/cee3c621ca5206c6d26691de83b4f66928c6e2ee/bugtags-lib-2.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
