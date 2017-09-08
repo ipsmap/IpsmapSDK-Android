@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="ipsmap-0.0.2.3">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/6bda73d3d0daf1a9500c92d9e5ea3aaa85a5fc2a/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/6bda73d3d0daf1a9500c92d9e5ea3aaa85a5fc2a/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/ff90f298d7973735e8ea1f66e6908b4e7c209199/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/ff90f298d7973735e8ea1f66e6908b4e7c209199/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

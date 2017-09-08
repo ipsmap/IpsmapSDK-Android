@@ -63,7 +63,50 @@ compile ('com.daoyixun:ipsmap:0.0.2.3', {
                 .appKey(Constants.IPSMAP_APP_KEY)
                 .shareToWechatListener(this)
                 .build());
+                
+
 ```
+SDK内部实现了分享功能，使用的前提是需要申请微信的appkey，并且需要实现接口ShareToWechatListener接口
+参考代码如下：
+```
+
+    参考代码
+   @Override
+    public void shareToWechat(String url, String title, String description) {
+        try {
+            IWXAPI wxApi = WXAPIFactory.createWXAPI(this, "YOUR WECHAT APP_ID");
+            wxApi.registerApp("YOUR WECHAT APP_ID");
+            if (!wxApi.isWXAppInstalled()) {
+                Toast.makeText(this, "未安装微信", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            WXWebpageObject webpage = new WXWebpageObject();
+            webpage.webpageUrl = url;
+            WXMediaMessage msg = new WXMediaMessage(webpage);
+            msg.title = title;
+            msg.description = description;
+            //你的App icon
+            int resourceId = R.drawable.ipsmap_logo;
+            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resourceId);
+            msg.setThumbImage(bitmap);
+            SendMessageToWX.Req req = new SendMessageToWX.Req();
+            req.transaction = buildTransaction("webpage");
+            req.message = msg;
+            req.scene = SendMessageToWX.Req.WXSceneSession;
+            wxApi.sendReq(req);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String buildTransaction(final String type) {
+        return (type == null) ? String.valueOf(System.currentTimeMillis()) : type + System.currentTimeMillis();
+    }
+                
+
+```
+
+
 
 启动地图
 ```
