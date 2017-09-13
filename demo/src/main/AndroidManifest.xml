@@ -48,15 +48,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".ShareActivity">
+            <!--微信分享-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <!--scheme替换为你的scheme-->
                 <data
                     android:host="share"
-                    android:scheme="ipsmap"></data>
+                    android:scheme="d"></data>
             </intent-filter>
+            <!--微信分享结束-->
         </activity>
     </application>
 
