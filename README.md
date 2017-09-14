@@ -72,7 +72,7 @@ SDK内部实现了分享功能，使用的前提是需要申请微信的appkey�
 
     参考代码
    @Override
-    public void shareToWechat(String url, String title, String description) {
+    public void shareToWechat(String url, String title, String description, Bitmap bitmap) {
         try {
             IWXAPI wxApi = WXAPIFactory.createWXAPI(this, "YOUR WECHAT APP_ID");
             wxApi.registerApp("YOUR WECHAT APP_ID");
@@ -85,9 +85,6 @@ SDK内部实现了分享功能，使用的前提是需要申请微信的appkey�
             WXMediaMessage msg = new WXMediaMessage(webpage);
             msg.title = title;
             msg.description = description;
-            //你的App icon
-            int resourceId = R.drawable.ipsmap_logo;
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resourceId);
             msg.setThumbImage(bitmap);
             SendMessageToWX.Req req = new SendMessageToWX.Req();
             req.transaction = buildTransaction("webpage");
