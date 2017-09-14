@@ -2,7 +2,6 @@ package com.daoyixun.ipsmap.demo;
 
 import android.app.Application;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
 import com.daoyixun.ipsmap.IpsMapSDK;
@@ -25,7 +24,7 @@ public class App extends Application implements ShareToWechatListener{
     }
 
     @Override
-    public void shareToWechat(String url, String title, String description) {
+    public void shareToWechat(String url, String title, String description, Bitmap bitmap) {
         try {
             IWXAPI wxApi = WXAPIFactory.createWXAPI(this, "YOUR WECHAT APP_ID");
             wxApi.registerApp("YOUR WECHAT APP_ID");
@@ -38,9 +37,6 @@ public class App extends Application implements ShareToWechatListener{
             WXMediaMessage msg = new WXMediaMessage(webpage);
             msg.title = title;
             msg.description = description;
-            //你的App icon
-            int resourceId = R.drawable.ipsmap_logo;
-            Bitmap bitmap = BitmapFactory.decodeResource(getResources(), resourceId);
             msg.setThumbImage(bitmap);
             SendMessageToWX.Req req = new SendMessageToWX.Req();
             req.transaction = buildTransaction("webpage");

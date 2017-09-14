@@ -55,7 +55,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:host="share"
-                    android:scheme=替换为你的scheme></data>
+                    android:scheme=你的scheme></data>
             </intent-filter>
             <!--微信分享结束-->
         </activity>
