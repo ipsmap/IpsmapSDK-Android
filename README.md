@@ -13,7 +13,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 ## 添加依赖
 
 ```
-compile ('com.ipsmap:ipsmap:1.2.6', {
+compile ('com.ipsmap:ipsmap:1.2.7', {
         exclude group: 'com.android.support'
     })
 ```
@@ -101,6 +101,19 @@ SDK内部实现了分享功能，使用的前提是需要申请微信的appkey�
     }
                 
 
+```
+
+```
+<!--微信分享-->
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data
+            android:host="share"
+            android:scheme=你的scheme></data>
+    </intent-filter>
+<!--微信分享结束-->
 ```
 
 
