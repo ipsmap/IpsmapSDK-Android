@@ -1,4 +1,4 @@
-package com.daoyixun.ipsmap.demo;
+package com.daoyixun.ipsmap.ipslocation;
 
 public class Constants {
 

@@ -1,20 +1,18 @@
-package com.daoyixun.ipsmap.demo;
+package com.daoyixun.ipsmap.ipslocation;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.daoyixun.ipsmap.IpsMapSDK;
 import com.daoyixun.location.ipsmap.IpsClient;
 import com.daoyixun.location.ipsmap.IpsLocation;
 import com.daoyixun.location.ipsmap.IpsLocationListener;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,11 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), ipsLocation.isInThisMap() + "", Toast.LENGTH_SHORT).show();
             }
         });
-
-    }
-
-    public void openIpsMap(View view) {
-        IpsMapSDK.openIpsMapActivity(this, Constants.IPSMAP_MAP_ID);
     }
 
     public void startLocation(View view) {
@@ -88,5 +81,4 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         ipsClient.stop();
     }
-
 }
