@@ -23,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ipsClient = new IpsClient(MainActivity.this, Constants.IPSMAP_MAP_ID);
+        //没有携带用户id
+        //ipsClient = new IpsClient(MainActivity.this, Constants.IPSMAP_MAP_ID);
+        //如果有用户id ,请用下面的构造方法
+        ipsClient = new IpsClient(MainActivity.this, Constants.IPSMAP_MAP_ID,Constants.IPSMAP_USER_ID);
         ipsClient.registerLocationListener(new IpsLocationListener() {
             @Override
             public void onReceiveLocation(IpsLocation ipsLocation) {
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 //定位位置是否在map中
-                Toast.makeText(getApplicationContext(), ipsLocation.isInThisMap() + "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), ipsLocation.isInThisMap() + "" + ipsLocation.getNearLocationRegion(), Toast.LENGTH_SHORT).show();
             }
         });
     }

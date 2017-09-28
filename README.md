@@ -16,6 +16,8 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 compile ('com.ipsmap:ipsmap:1.2.7', {
         exclude group: 'com.android.support'
     })
+
+如果仅仅使用定位模块请参考ipslocation demo README
 ```
 
 ## 加入权限
@@ -56,9 +58,10 @@ compile ('com.ipsmap:ipsmap:1.2.7', {
 初始化
 
 在Application 的onCreate 方法中进行初始化
-```
+``` 不使用微信分享
     IpsMapSDK.init(context, IPSMAP_APP_KEY);
     或
+    使用微信分享
     IpsMapSDK.init(new IpsMapSDK.Configuration.Builder(context)
                 .appKey(Constants.IPSMAP_APP_KEY)
                 .shareToWechatListener(this)
@@ -125,7 +128,7 @@ IpsMapSDK.openIpsMapActivity(context, map_id);
 IpsMapSDK.openIpsMapActivity(context, map_id, target_id);
 ```
 
-定位监听
+定位监听,获取当前的位置,可以参考ipslocation demo ,需要提前获取定位和蓝牙权限
 ```
 ipsClient = new IpsClient(context, map_id); 
 ipsClient.registerLocationListener(new IpsLocationListener() {
