@@ -16,9 +16,8 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 compile ('com.ipsmap:ipsmap:1.2.9', {
         exclude group: 'com.android.support'
     })
-
-如果仅仅使用定位模块请参考ipslocation demo README
 ```
+如果仅仅使用定位模块请参考ipslocation demo README
 
 
 ## 目前支持的cpu 架构 arm,暂时不支持其他架构,请配置下面的cpu架构
