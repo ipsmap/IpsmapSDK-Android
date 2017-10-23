@@ -17,9 +17,12 @@ public class App extends Application implements ShareToWechatListener{
     @Override
     public void onCreate() {
         super.onCreate();
+
         IpsMapSDK.init(new IpsMapSDK.Configuration.Builder(this)
                 .appKey(Constants.IPSMAP_APP_KEY)
                 .shareToWechatListener(this)
+                //正式版请关闭
+//                .debug(false)
                 .build());
     }
 

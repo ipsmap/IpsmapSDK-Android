@@ -13,13 +13,21 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 ## 添加依赖
 
 ```
-compile ('com.ipsmap:ipsmap:1.2.7', {
+compile ('com.ipsmap:ipsmap:1.2.9', {
         exclude group: 'com.android.support'
     })
 
 如果仅仅使用定位模块请参考ipslocation demo README
 ```
 
+
+## 目前支持的cpu 架构 arm,暂时不支持其他架构,请配置下面的cpu架构
+```
+ndk {
+            // 设置支持的 SO 库构架
+            abiFilters 'armeabi'
+}
+```
 ## 加入权限
 导入IpsmapSDK后需要
 ```
@@ -58,13 +66,15 @@ compile ('com.ipsmap:ipsmap:1.2.7', {
 初始化
 
 在Application 的onCreate 方法中进行初始化
-``` 不使用微信分享
+``` 使用默认配置信息
     IpsMapSDK.init(context, IPSMAP_APP_KEY);
     或
-    使用微信分享
+    定制配置信息 ,使用微信分享功能请实现相关的接口
     IpsMapSDK.init(new IpsMapSDK.Configuration.Builder(context)
                 .appKey(Constants.IPSMAP_APP_KEY)
                 .shareToWechatListener(this)
+                //正式版请关闭 默认是关闭的
+                .debug(false)
                 .build());
                 
 
