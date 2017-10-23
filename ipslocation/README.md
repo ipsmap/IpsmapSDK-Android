@@ -66,7 +66,7 @@ compile ('com.ipsmap:ips-location:0.2.0', {
 注意如果同时使用了ipsmap的导航模块,并且已经初始化导航模块,则不用初始化定位模块,ipsmap导航模块 已经对定位进行了初始化,
     IpsLocationSDK.init(new IpsLocationSDK.Configuration.Builder(this)
                 .appKey(Constants.IPSMAP_APP_KEY)
-                .debug(true)
+                .debug(false)
                 .build());
                 开启debug 后有log 日志,打正式版请务必关闭debug 日志
 

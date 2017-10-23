@@ -65,7 +65,8 @@ ndk {
 初始化
 
 在Application 的onCreate 方法中进行初始化
-``` 使用默认配置信息
+``` 
+    使用默认配置信息
     IpsMapSDK.init(context, IPSMAP_APP_KEY);
     或
     定制配置信息 ,使用微信分享功能请实现相关的接口
