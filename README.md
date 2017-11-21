@@ -117,6 +117,7 @@ SDK内部实现了分享功能，使用的前提是需要申请微信的appkey�
 ```
 
 ```
+将微信分享通过浏览器打开的acitivty 中加入配置 
 <!--微信分享-->
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
@@ -127,6 +128,29 @@ SDK内部实现了分享功能，使用的前提是需要申请微信的appkey�
             android:scheme=你的scheme></data>
     </intent-filter>
 <!--微信分享结束-->
+
+重写以下两个方法
+  @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_share);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                IpsMapSDK.shareLinkToMapView(getIntent());
+                finish();
+            }
+        }, 500);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        IpsMapSDK.shareLinkToMapView(intent);
+        finish();
+    }
+
+
 ```
 
 
@@ -175,3 +199,29 @@ protected void onDestroy() {
 ```
 
 微信分享以及复制跳转请参考demo
+
+## FAQ
+1.0
+![](/pic/7991511168017_.pic.jpg)
+![](/pic/8021511168507_.pic.jpg)
+出现上面的类似xml资源文件缺失的情况:
+两种解决方案:
+1. 在通过gradle 引用是加入exclude group: 'com.android.support' ,并且自己加入compile 'com.android.support:appcompat-v7:版本号'
+建议方式.建议版本号25.3.1
+2. 修改项目的support 支持和  compile 'com.android.support:appcompat-v7:25.3.1' 版本号一致
+
+2.0 
+app如果使用了okhttp ,glide 出现于第三发开源库 冲突
+两种解决方案:
+1.通过  exclude group: "com.squareup.okhttp3" 方式处理
+然后保留项目的okhttp和glide 
+2.保持和sdk的一致引入的第三方库版本号一致.否则有可能出现冲突
+      "glide"             : "com.github.bumptech.glide:glide:3.7.0",
+       "okhttp"            : "com.squareup.okhttp3:okhttp:3.8.0",
+       "gson"              : "com.google.code.gson:gson:2.8.2",
+          
+
+
+  
+
+
