@@ -211,15 +211,18 @@ protected void onDestroy() {
 2. 修改项目的support 支持和  compile 'com.android.support:appcompat-v7:25.3.1' 版本号一致
 
 2.0 
-app如果使用了okhttp ,glide 出现于第三发开源库 冲突
+```
+app如果使用了okhttp ,glide ...出现第三发开源库 冲突
 两种解决方案:
 1.通过  exclude group: "com.squareup.okhttp3" 方式处理
 然后保留项目的okhttp和glide 
 2.保持和sdk的一致引入的第三方库版本号一致.否则有可能出现冲突
-      "glide"             : "com.github.bumptech.glide:glide:3.7.0",
-       "okhttp"            : "com.squareup.okhttp3:okhttp:3.8.0",
-       "gson"              : "com.google.code.gson:gson:2.8.2",
-          
+```
+```
+"glide"             : "com.github.bumptech.glide:glide:3.7.0",
+"okhttp"            : "com.squareup.okhttp3:okhttp:3.8.0",
+"gson"              : "com.google.code.gson:gson:2.8.2",
+ ```        
 
 
   
