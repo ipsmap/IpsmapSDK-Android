@@ -59,6 +59,9 @@ ndk {
     <!-- 配置权限，用来记录应用配置信息 -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    
+     <!-- 注意新增的权限,注意添加-->
+     <uses-permission android:name="android.permission.VIBRATE" />
 ```
 
 ## 使用
