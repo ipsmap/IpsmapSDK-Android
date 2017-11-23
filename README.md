@@ -30,38 +30,45 @@ ndk {
 ## 加入权限
 导入IpsmapSDK后需要
 ```
-    <!-- sdk 使用需要的权限 -->
-    <!-- if use wifi indoor positioning -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <!-- if use ble indoor positioning -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <!-- general permission -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <!-- 连接网络权限，用于执行云端语音能力 -->
-    <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!-- 读取网络信息状态 -->
-    <!-- 允许程序改变网络连接状态 -->
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <!-- 读取手机信息权限 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!-- 读取联系人权限，上传联系人需要用到此权限 -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <!-- 外存储写权限，构建语法需要用到此权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- 外存储读权限，构建语法需要用到此权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- 配置权限，用来记录应用配置信息 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
+ 
     
      <!-- 注意新增的权限,注意添加-->
-     <uses-permission android:name="android.permission.VIBRATE" />
+        <uses-permission android:name="android.permission.VIBRATE" />
+         <!-- sdk 使用需要的权限 -->
+         <!-- if use wifi indoor positioning -->
+         <uses-permission android:name="android.permission.INTERNET" />
+         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+         <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+         <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+         <!-- if use ble indoor positioning -->
+         <uses-permission android:name="android.permission.BLUETOOTH" />
+         <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+         <!-- general permission -->
+         <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+         <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+         <!-- 连接网络权限，用于执行云端语音能力 -->
+         <!-- 获取手机录音机使用权限，听写、识别、语义理解需要用到此权限 -->
+         <uses-permission android:name="android.permission.RECORD_AUDIO" />
+         <!-- 读取网络信息状态 -->
+         <!-- 允许程序改变网络连接状态 -->
+         <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+         <!-- 读取手机信息权限 -->
+         <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+         <!-- 读取联系人权限，上传联系人需要用到此权限 -->
+         <uses-permission android:name="android.permission.READ_CONTACTS" />
+         <!-- 外存储写权限，构建语法需要用到此权限 -->
+         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+         <!-- 外存储读权限，构建语法需要用到此权限 -->
+         <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+         <!-- 配置权限，用来记录应用配置信息 -->
+         <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+         <uses-permission android:name="android.permission.READ_LOGS" />
+         <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+         <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+         <!-- 判断程序是否在前台运行,必须 -->
+         <uses-permission android:name="android.permission.GET_TASKS" />
+         <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+         <uses-permission android:name="android.permission.VIBRATE" />
 ```
 
 ## 使用
@@ -234,6 +241,18 @@ app如果使用了okhttp ,glide ...出现第三发开源库 冲突
  
 ![](/pic/AC0BDB3E-C313-4644-AB5F-F3C8FA209AEC.png) 
 ```
+
+
+    allprojects {
+        repositories {
+            jcenter()
+            maven { url "https://jitpack.io" }
+            flatDir {
+                dirs 'libs'
+            }
+        }
+    }
+    
     compileOptions {
          sourceCompatibility JavaVersion.VERSION_1_8
          targetCompatibility JavaVersion.VERSION_1_8
