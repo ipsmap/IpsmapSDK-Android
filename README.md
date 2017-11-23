@@ -117,7 +117,8 @@ SDK内部实现了分享功能，使用的前提是需要申请微信的appkey�
 ```
 
 ```
-将微信分享通过浏览器打开的acitivty 中加入配置 
+将微信分享通过浏览器打开的acitivty 中加入配置 ,建议新建一个界面,不要现有的逻辑冲突.
+这个界面的功能一个中转的功能,是通过浏览器唤起这个界面,这个界面打开地图.
 <!--微信分享-->
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
@@ -134,6 +135,7 @@ SDK内部实现了分享功能，使用的前提是需要申请微信的appkey�
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
+        //如果不是新建的页面判断一下scheme
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

@@ -19,6 +19,7 @@ public class ShareActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
+        //如果不是新建的页面判断一下scheme
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
