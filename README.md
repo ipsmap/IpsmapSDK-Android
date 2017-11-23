@@ -13,7 +13,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 ## 添加依赖
 
 ```
-compile ('com.ipsmap:ipsmap:1.3.1', {
+compile ('com.ipsmap:ipsmap:1.3.6', {
         exclude group: 'com.android.support'
     })
 ```
@@ -225,6 +225,14 @@ app如果使用了okhttp ,glide ...出现第三发开源库 冲突
  ```        
 
 
-  
+ 3.0
+ 
+![](/pic/AC0BDB3E-C313-4644-AB5F-F3C8FA209AEC.png) 
+```
+    compileOptions {
+         sourceCompatibility JavaVersion.VERSION_1_8
+         targetCompatibility JavaVersion.VERSION_1_8
+     }
+```
 
 
