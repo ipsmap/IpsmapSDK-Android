@@ -16,7 +16,7 @@ public class App extends Application {
         super.onCreate();
         IpsLocationSDK.init(new IpsLocationSDK.Configuration.Builder(this)
                 .appKey(Constants.IPSMAP_APP_KEY)
-                .debug(false)
+                .debug(true)
                 .build());
     }
 }

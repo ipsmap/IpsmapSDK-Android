@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.daoyixun.ipsmap.ipslocation">
+
     <!-- sdk 使用需要的权限 -->
-    <!-- 注意新增的权限,注意添加-->
+    <!-- 注意新增的权限,注意添加 -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <!-- if use wifi indoor positioning -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -41,7 +42,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".LocationActivity">
+
+        </activity>
+        <activity android:name=".NavActivity" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
