@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
         applicationId "com.daoyixun.ipsmap.demo"
@@ -33,13 +33,15 @@ android {
 
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:25.0.3'
-    implementation 'com.android.support:design:25.0.3'
-    api 'com.ipsmap:ipsmap:1.3.6'
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.3.4'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.0.3'
+    compile 'com.android.support:design:25.0.3'
+    compile ('com.ipsmap:ips-location:1.3.7', {
+        exclude group: 'com.android.support'
+    })
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.3.4'
 }
