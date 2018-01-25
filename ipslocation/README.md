@@ -15,7 +15,7 @@ Ipslocation-Android 是一套基于 Android 4.3 及以上版本的室内地图�
 ```
 注意如果同时使用了ipsmap的导航模块则不用导入,ispmap 导航模块已经导入了ips-location 模块
 
-compile ('com.ipsmap:ips-location:0.2.7', {
+compile ('com.ipsmap:ips-location:0.3.2', {
         exclude group: 'com.android.support'
     })
 ```
@@ -57,9 +57,7 @@ compile ('com.ipsmap:ips-location:0.2.7', {
 ## 使用
 初始化
 
-在Application 的onCreate 方法中进行初始化
-
-
+以下的功能都需要在在Application 的onCreate 方法中进行初始化
 
 
 ```
@@ -73,8 +71,8 @@ compile ('com.ipsmap:ips-location:0.2.7', {
 
 ```
 
-
-定位监听,获取当前的位置,可以参考ipslocation demo ,需要提前获取定位和蓝牙权限
+## 一 定位功能
+1.定位监听,获取当前的位置,可以参考ipslocation demo ,需要提前获取定位和蓝牙权限
 ```
 
 ipsClient = new IpsClient(context, map_id);
@@ -95,7 +93,7 @@ ipsClient.registerLocationListener(new IpsLocationListener() {
 ipsClient.start();
 ```
 
-activity 结束时调用
+2.activity 结束时调用
 ```
 @Override
 protected void onDestroy() {
@@ -107,21 +105,17 @@ protected void onDestroy() {
 
 
 
-背景导航 到目的地
+## 而 背景导航到目的地功能
 
-1.初始化
-
+1.初始化(sdk 进行下载地图 和初始化定位引擎)
 ```
-if (ipsNavigation == null){
-            ipsNavigation = new IpsNavigation(TestActivity.this, "VhsehJzuZA", "Mv22bb4QWI");
+  ipsNavigation = new IpsNavigation(getBaseContext(), "VhsehJzuZA");
             ipsNavigation.registerUserToTargetLocationListener(new UserToTargetLocationListener() {
                 @Override
                 public void onError(InitNavErrorException errorException) {
-                //返回错误码 ,错误码 在最后,蓝牙 的一些 异常情况 ,根据 错误码 就行 提示用户操作
                     com.daoyixun.location.ipsmap.utils.L.e("ddddd","error "+errorException.toString());
                 }
             });
-    }
 ```
 
 
@@ -158,13 +152,6 @@ UserToTargetData userToTargetData = ipsNavigation.startRouting();
 ipsNavigation.stopNavigation();
 
 ```
-```
-
-```
-```
-
-```
-
 
 ## 混淆
 ```
