@@ -17,6 +17,8 @@ import com.daoyixun.location.ipsmap.model.bean.UserToTargetData;
 import com.daoyixun.location.ipsmap.utils.L;
 import com.daoyixun.location.ipsmap.utils.T;
 
+import java.util.ArrayList;
+
 public class NavActivity extends AppCompatActivity {
     private static final int REQUEST_LOCATION = 1;
     private IpsClient ipsClient;
@@ -26,6 +28,8 @@ public class NavActivity extends AppCompatActivity {
     private Button btnNavTo;
     private IpsNavigation ipsNavigation;
     private TextView tvNavContent;
+    private ArrayList<Object> targetIdList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,19 +45,25 @@ public class NavActivity extends AppCompatActivity {
         edTextTargetId = (EditText) findViewById(R.id.ed_text_tagetid);
         btnSetTarget = (Button) findViewById(R.id.btn_settarget);
         tvNavContent = (TextView) findViewById(R.id.tv_content);
+        targetIdList = new ArrayList<>();
         btnSetTarget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Editable text = edTextTargetId.getText();
-                if (!TextUtils.isEmpty(text.toString().trim())){
+                targetIdList.clear();
+                if (!TextUtils.isEmpty(text.toString().trim())) {
                     targetId = text.toString().trim();
-                }else {
-                    targetId = "Mv22bb4QWI";
+                } else {
+                    targetIdList.add("Mv22bb4QWI");
+                    targetIdList.add("UJx02Y1FyR");
+                    targetIdList.add("bXTu1S1Dzk");
+                    targetIdList.add("rIOVisqH8o");
+                    targetIdList.add("481RceIJ2K");
                 }
-                UserToTargetData targData = ipsNavigation.setTargetId(targetId);
-                if (!targData.isSuccess()){
-//                    Toast.sh("设置目的地失败",Toast.);
-                    return;
+                targData = ipsNavigation.setTargetId(targetIdList);
+                for (int i = 0; i < targData.size(); i++) {
+                    UserToTargetData userToTargetData = targData.get(i);
+                    L.e(" dddd", "userToTargetData " + i + "   " + userToTargetData.toString());
                 }
             }
         });
@@ -62,19 +72,36 @@ public class NavActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                UserToTargetData targData = ipsNavigation.setTargetId(targetId);
-                if (!targData.isSuccess()){
-                    T.showShort("设置目的地失败");
-                    return;
+                targData = ipsNavigation.setTargetId(targetIdList);
+                for (int i = 0; i < targData.size(); i++) {
+                    UserToTargetData userToTargetData = targData.get(i);
+//                    L.e(" dddd","userToTargetData "+ i + "   "+ userToTargetData.toString());
                 }
-                UserToTargetData userToTargetData = ipsNavigation.startRouting();
-                if(userToTargetData != null){
-                    boolean success = userToTargetData.isSuccess();
-                    if (success){
-                        L.e("dddd",userToTargetData.toString());
-                        tvNavContent.setText(""+userToTargetData.getTarget() + "  "+ userToTargetData.getToTargetDistance());
-                    }else {
-                        tvNavContent.setText("flase "+ "  "+ userToTargetData.getErrorMessage());
+//                + "当前的楼层:" + userToTargetData.getLocationFloor()
+
+                userToTargetDataList = ipsNavigation.startRouting();
+                String content = "";
+                if (userToTargetDataList != null) {
+                    for (int i = 0; i < userToTargetDataList.size(); i++) {
+                        UserToTargetData userToTargetData = userToTargetDataList.get(i);
+                        if (userToTargetDataList != null) {
+                            boolean success = userToTargetData.isSuccess();
+                            if (success) {
+                                L.e("dddd", userToTargetData.toString());
+                                String cont = i + "目的地:" + userToTargetData.getTarget() + " 距离 " + userToTargetData.getToTargetDistance() + "楼层:"
+                                        + userToTargetData.getTargetFloor()  +
+                                        "location "+userToTargetData.getNearLocationRegionName()+
+                                        "\r\n";
+                                content += cont;
+                                tvNavContent.setText(content);
+                            } else {
+                                String cont = i + "   " + "flase " + "  " + userToTargetData.getErrorMessage() + "\r\n";
+                                content += cont;
+                                tvNavContent.setText(content);
+                            }
+                        } else {
+                            L.e("dddd", userToTargetData.toString());
+                        }
                     }
                 }
 
