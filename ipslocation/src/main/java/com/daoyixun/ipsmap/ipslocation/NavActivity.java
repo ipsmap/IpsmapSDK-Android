@@ -15,7 +15,6 @@ import com.daoyixun.location.ipsmap.UserToTargetLocationListener;
 import com.daoyixun.location.ipsmap.model.bean.InitNavErrorException;
 import com.daoyixun.location.ipsmap.model.bean.UserToTargetData;
 import com.daoyixun.location.ipsmap.utils.L;
-import com.daoyixun.location.ipsmap.utils.T;
 
 import java.util.ArrayList;
 
@@ -28,7 +27,9 @@ public class NavActivity extends AppCompatActivity {
     private Button btnNavTo;
     private IpsNavigation ipsNavigation;
     private TextView tvNavContent;
-    private ArrayList<Object> targetIdList;
+    private ArrayList<String> targetIdList;
+    private ArrayList<UserToTargetData> targetData;
+    private ArrayList<UserToTargetData> userToTargetDataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +61,9 @@ public class NavActivity extends AppCompatActivity {
                     targetIdList.add("rIOVisqH8o");
                     targetIdList.add("481RceIJ2K");
                 }
-                targData = ipsNavigation.setTargetId(targetIdList);
-                for (int i = 0; i < targData.size(); i++) {
-                    UserToTargetData userToTargetData = targData.get(i);
+                targetData = ipsNavigation.setTargetId(targetIdList);
+                for (int i = 0; i < targetData.size(); i++) {
+                    UserToTargetData userToTargetData = targetData.get(i);
                     L.e(" dddd", "userToTargetData " + i + "   " + userToTargetData.toString());
                 }
             }
@@ -72,9 +73,9 @@ public class NavActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                targData = ipsNavigation.setTargetId(targetIdList);
-                for (int i = 0; i < targData.size(); i++) {
-                    UserToTargetData userToTargetData = targData.get(i);
+                targetData = ipsNavigation.setTargetId(targetIdList);
+                for (int i = 0; i < targetData.size(); i++) {
+                    UserToTargetData userToTargetData = targetData.get(i);
 //                    L.e(" dddd","userToTargetData "+ i + "   "+ userToTargetData.toString());
                 }
 //                + "当前的楼层:" + userToTargetData.getLocationFloor()
@@ -82,27 +83,27 @@ public class NavActivity extends AppCompatActivity {
                 userToTargetDataList = ipsNavigation.startRouting();
                 String content = "";
                 if (userToTargetDataList != null) {
-                    for (int i = 0; i < userToTargetDataList.size(); i++) {
-                        UserToTargetData userToTargetData = userToTargetDataList.get(i);
-                        if (userToTargetDataList != null) {
-                            boolean success = userToTargetData.isSuccess();
-                            if (success) {
-                                L.e("dddd", userToTargetData.toString());
-                                String cont = i + "目的地:" + userToTargetData.getTarget() + " 距离 " + userToTargetData.getToTargetDistance() + "楼层:"
-                                        + userToTargetData.getTargetFloor()  +
-                                        "location "+userToTargetData.getNearLocationRegionName()+
-                                        "\r\n";
-                                content += cont;
-                                tvNavContent.setText(content);
+                        for (int i = 0; i < userToTargetDataList.size(); i++) {
+                            UserToTargetData userToTargetData = userToTargetDataList.get(i);
+                            if (userToTargetDataList != null) {
+                                boolean success = userToTargetData.isSuccess();
+                                if (success) {
+                                    L.e("dddd", userToTargetData.toString());
+                                    String cont = i + "目的地:" + userToTargetData.getTarget() + " 距离 " + userToTargetData.getToTargetDistance() + "楼层:"
+                                            + userToTargetData.getTargetFloor()  +
+                                            "location "+userToTargetData.getNearLocationRegionName()+
+                                            "\r\n";
+                                    content += cont;
+                                    tvNavContent.setText(content);
+                                } else {
+                                    String cont = i + "   " + "flase " + "  " + userToTargetData.getErrorMessage() + "\r\n";
+                                    content += cont;
+                                    tvNavContent.setText(content);
+                                }
                             } else {
-                                String cont = i + "   " + "flase " + "  " + userToTargetData.getErrorMessage() + "\r\n";
-                                content += cont;
-                                tvNavContent.setText(content);
+                                L.e("dddd", userToTargetData.toString());
                             }
-                        } else {
-                            L.e("dddd", userToTargetData.toString());
                         }
-                    }
                 }
 
             }

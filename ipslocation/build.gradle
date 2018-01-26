@@ -21,10 +21,20 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    signingConfigs {
+        release {
+        }
+
+        deubg {
+        }
+    }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
@@ -42,6 +52,27 @@ android {
     publishNonDefault true
 }
 
+File propFile = file('../sign.properties');
+if (propFile.exists()) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(propFile))
+    if (props.containsKey('STORE_FILE') && props.containsKey('STORE_PASSWORD') &&
+            props.containsKey('KEY_ALIAS') && props.containsKey('KEY_PASSWORD')) {
+        android.signingConfigs.release.storeFile = file(props['STORE_FILE'])
+        android.signingConfigs.release.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.release.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.release.keyPassword = props['KEY_PASSWORD']
+        android.signingConfigs.debug.storeFile = file(props['STORE_FILE'])
+        android.signingConfigs.debug.storePassword = props['STORE_PASSWORD']
+        android.signingConfigs.debug.keyAlias = props['KEY_ALIAS']
+        android.signingConfigs.debug.keyPassword = props['KEY_PASSWORD']
+    } else {
+        android.buildTypes.release.signingConfig = null
+    }
+} else {
+    android.buildTypes.release.signingConfig = null
+}
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -52,7 +83,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
 //    compile 'com.ipsmap:ipsmap:1.3.4'
-    compile 'com.ipsmap:ips-location:0.3.2'
+    compile 'com.ipsmap:ips-location:0.3.4'
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:1.3.4'
 
 

@@ -107,9 +107,9 @@ protected void onDestroy() {
 
 ## 功能二  背景导航到目的地功能
 
-1.初始化(sdk 进行下载地图 和初始化定位引擎)
+1.初始化(sdk 进行下载地图 和初始化定位引擎 ,这里面处理蓝牙异常是否需要重启)
 ```
-  ipsNavigation = new IpsNavigation(getBaseContext(), "VhsehJzuZA");
+  ipsNavigation = new IpsNavigation(getBaseContext(), mapid );
             ipsNavigation.registerUserToTargetLocationListener(new UserToTargetLocationListener() {
                 @Override
                 public void onError(InitNavErrorException errorException) {
@@ -122,11 +122,13 @@ protected void onDestroy() {
 2.设置 目的地 ,可以通过 构造 方法传进来 ,也 可以 通过 函数设置,注意是否成功
 
 ```
-    UserToTargetData targData = ipsNavigation.setTargetId(targetId);
-    if (!targData.isSuccess()){
-         T.showShort("设置目的地失败");
-         return;
-    }
+     targetIdList = new ArrayList<>();
+     targetIdList.add("Mv22bb4QWI");
+    targetIdList.add("UJx02Y1FyR");
+    targetIdList.add("bXTu1S1Dzk");
+    targetIdList.add("rIOVisqH8o");
+    targetIdList.add("481RceIJ2K");
+    UserToTargetData targData = ipsNavigation.setTargetId(targetIdList);
 ```
 
 
@@ -134,16 +136,30 @@ protected void onDestroy() {
 
 
 ```
-UserToTargetData userToTargetData = ipsNavigation.startRouting();
-    if(userToTargetData != null){
-        boolean success = userToTargetData.isSuccess();
-        if (success){
-            L.e("dddd",userToTargetData.toString());
-            tvNavContent.setText(""+userToTargetData.getTarget() + "  "+ userToTargetData.getToTargetDistance());
-        }else {
-            tvNavContent.setText("flase "+ "  "+ userToTargetData.getErrorMessage());
-        }
-}
+            ArrayList<UserToTargetData> userToTargetDataList = ipsNavigation.startRouting();
+             if (userToTargetDataList != null) {
+                        for (int i = 0; i < userToTargetDataList.size(); i++) {
+                            UserToTargetData userToTargetData = userToTargetDataList.get(i);
+                            if (userToTargetDataList != null) {
+                                boolean success = userToTargetData.isSuccess();
+                                if (success) {
+                                    L.e("dddd", userToTargetData.toString());
+                                    String cont = i + "目的地:" + userToTargetData.getTarget() + " 距离 " + userToTargetData.getToTargetDistance() + "楼层:"
+                                            + userToTargetData.getTargetFloor()  +
+                                            "location "+userToTargetData.getNearLocationRegionName()+
+                                            "\r\n";
+                                    content += cont;
+                                    tvNavContent.setText(content);
+                                } else {
+                                    String cont = i + "   " + "flase " + "  " + userToTargetData.getErrorMessage() + "\r\n";
+                                    content += cont;
+                                    tvNavContent.setText(content);
+                                }
+                            } else {
+                                L.e("dddd", userToTargetData.toString());
+                            }
+                        }
+             }
 
 ```
 4.结束导航
@@ -185,6 +201,9 @@ ipsNavigation.stopNavigation();
 
     public  static final  int ERROR_CODE_7 = 7;
     public static final String ERROR_MESSAGE_7 = "正在加载地图!";
+
+    public  static final  int ERROR_CODE_8 = 8;
+    public static final String ERROR_MESSAGE_8 = "没有设置目的地列表!";
 ```
 
 
