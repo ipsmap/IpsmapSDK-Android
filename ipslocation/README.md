@@ -15,7 +15,7 @@ Ipslocation-Android 是一套基于 Android 4.3 及以上版本的室内地图�
 ```
 注意如果同时使用了ipsmap的导航模块则不用导入,ispmap 导航模块已经导入了ips-location 模块
 
-compile ('com.ipsmap:ips-location:0.3.2', {
+compile ('com.ipsmap:ips-location:0.3.4', {
         exclude group: 'com.android.support'
     })
 ```
