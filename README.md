@@ -57,6 +57,18 @@ IpsMapRobotSDK.openIpsMapActivity(getBaseContext());
 
 ```
 
+启动地图方式2(建议) 
+```
+IpsMapRobotSDK.openIpsMapActivity(Context context, String mapId, String targetId);
+
+```
+
+启动地图方式3(建议) 
+```
+IpsMapRobotSDK.openIpsMapActivity(Context context, String mapId);
+
+```
+
 定位监听,获取当前的位置,可以参考ipslocation demo ,需要提前获取定位和蓝牙权限
 ```
 ipsClient = new IpsClient(context, map_id); 
