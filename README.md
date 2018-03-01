@@ -45,25 +45,28 @@ ndk {
 
 在Application 的onCreate 方法中进行初始化
 ``` 
-IpsMapRobotSDK.init(new IpsMapRobotSDK.Configuration.Builder(context)
-.debug(false)
-.build()
+  使用默认配置信息
+    IpsMapSDK.init(context, IPSMAP_APP_KEY);
+    或
+    定制配置信息 ,使用微信分享功能请实现相关的接口
+    IpsMapSDK.init(new IpsMapSDK.Configuration.Builder(context)
+                .appKey(Constants.IPSMAP_APP_KEY)
+                .shareToWechatListener(this)
+                //正式版请关闭 默认是关闭的
+                .debug(false)
+                .build());
                 
 ```
 
-启动地图方式1(建议) 
-```
-IpsMapRobotSDK.openIpsMapActivity(getBaseContext());
 
-```
 
-启动地图方式2(建议) 
+启动地图方式1,携带目的地和地图id,导航到目的地
 ```
 IpsMapRobotSDK.openIpsMapActivity(Context context, String mapId, String targetId);
 
 ```
 
-启动地图方式3(建议) 
+启动地图方式2,仅仅传递地图的id
 ```
 IpsMapRobotSDK.openIpsMapActivity(Context context, String mapId);
 
