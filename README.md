@@ -62,13 +62,13 @@ ndk {
 
 启动地图方式1,携带目的地和地图id,导航到目的地
 ```
-IpsMapRobotSDK.openIpsMapActivity(Context context, String mapId, String targetId);
+IpsMapSDK.openIpsMapActivity(Context context, String mapId, String targetId);
 
 ```
 
 启动地图方式2,仅仅传递地图的id
 ```
-IpsMapRobotSDK.openIpsMapActivity(Context context, String mapId);
+IpsMapSDK.openIpsMapActivity(Context context, String mapId);
 
 ```
 
