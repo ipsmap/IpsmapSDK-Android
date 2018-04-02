@@ -56,6 +56,37 @@ ndk {
                 //正式版请关闭 默认是关闭的
                 .debug(false)
                 .build());
+
+
+
+
+  微信分享功能可以参考以下代码,需要替换自己申请的id
+
+      @Override
+      public void shareToWechat(String url, String title, String description, Bitmap bitmap) {
+          try {
+              IWXAPI wxApi = WXAPIFactory.createWXAPI(context, Constants.WECHAT_APP_ID);
+              wxApi.registerApp(Constants.WECHAT_APP_ID);
+              if (!wxApi.isWXAppInstalled()) {
+                  T.showShort("未安装微信");
+                  return;
+              }
+              WXWebpageObject webpage = new WXWebpageObject();
+              webpage.webpageUrl = url;
+              WXMediaMessage msg = new WXMediaMessage(webpage);
+              msg.title = title;
+              msg.description = description;
+              msg.setThumbImage(bitmap);
+              SendMessageToWX.Req req = new SendMessageToWX.Req();
+              req.transaction = buildTransaction("webpage");
+              req.message = msg;
+              req.scene = SendMessageToWX.Req.WXSceneSession;
+              wxApi.sendReq(req);
+          } catch (Exception e) {
+              e.printStackTrace();
+          }
+      }
+
                 
 ```
 
