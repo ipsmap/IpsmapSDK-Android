@@ -14,7 +14,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 ## 添加依赖
 
 ```
-compile ('com.ipsmap:ipsmap:1.4.0', {
+compile ('com.ipsmap:ipsmap:1.4.1', {
         exclude group: 'com.android.support'
     })
 ```
