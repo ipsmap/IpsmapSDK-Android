@@ -21,4 +21,12 @@
         android:text="判断是否在医院内"
         android:onClick="startLocation"/>
 
+    <Button
+
+        android:id="@+id/openSmartWeixin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开微信小程序"
+        android:onClick="startLocation"/>
+
 </LinearLayout>

@@ -14,9 +14,17 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 ## 添加依赖
 
 ```
+// marven
 compile ('com.ipsmap:ipsmap:1.4.1', {
         exclude group: 'com.android.support'
     })
+
+
+//或者加入aar 依赖，文件在项目的根目录下
+compile project(':ips-location-release')
+compile project(':ipsmap-release')
+
+
 ```
 如果仅仅使用定位模块请参考ipslocation demo README
 

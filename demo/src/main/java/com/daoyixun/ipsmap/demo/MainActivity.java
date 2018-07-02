@@ -1,6 +1,7 @@
 package com.daoyixun.ipsmap.demo;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,18 +15,26 @@ import com.daoyixun.ipsmap.IpsMapSDK;
 import com.daoyixun.location.ipsmap.IpsClient;
 import com.daoyixun.location.ipsmap.IpsLocation;
 import com.daoyixun.location.ipsmap.IpsLocationListener;
+import com.daoyixun.location.ipsmap.utils.IpsConstants;
+import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
+import static com.iflytek.cloud.util.ResourceUtil.RESOURCE_TYPE.path;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_LOCATION = 1;
     private IpsClient ipsClient;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = MainActivity.this;
         ipsClient = new IpsClient(MainActivity.this, Constants.IPSMAP_MAP_ID);
         ipsClient.registerLocationListener(new IpsLocationListener() {
             @Override
@@ -55,6 +64,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public  void openSmartWeixin(View view){
+
+        // 1.需要打正式版
+        // 2.确保id 和包名正确
+        // 3.demo 跑不起来是包名不正确没有申请微信
+        String appId = "wxfb94585e6d4df00c"; // 填应用AppId
+        IWXAPI api = WXAPIFactory.createWXAPI(context, appId);
+
+        WXLaunchMiniProgram.Req req = new WXLaunchMiniProgram.Req();
+        req.userName = "gh_5c53d7d8e521"; // 填小程序原始id
+        req.path = "pages/index?id="+Constants.IPSMAP_MAP_ID;                  //拉起小程序页面的可带参路径，不填默认拉起小程序首页
+        req.miniprogramType = WXLaunchMiniProgram.Req.MINIPTOGRAM_TYPE_RELEASE;// 可选打开 开发版，体验版和正式版
+        api.sendReq(req);
+    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
