@@ -55,9 +55,9 @@ dependencies {
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
 //    // 接入Marven 的方式
-//    compile 'com.ipsmap:ipsmap:1.4.1'
+    compile 'com.ipsmap:ipsmap:1.4.1'
 
     // 接入aar 的方式
-    compile project(':ips-location-release')
-    compile project(':ipsmap-release')
+//    compile project(':ips-location-release')
+//    compile project(':ipsmap-release')
 }
