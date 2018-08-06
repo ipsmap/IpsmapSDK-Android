@@ -18,12 +18,13 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 
 建议使用marven 方式，两者选其中一种，如果全部添加，编译报资源重复的错误
 // marven
-compile ('com.ipsmap:ipsmap:1.4.1', {
+compile ('com.ipsmap:ipsmap:1.4.2', {
         exclude group: 'com.android.support'
     })
 
 
 //或者加入aar 依赖，文件在项目的根目录下
+
 compile project(':ips-location-release')
 compile project(':ipsmap-release')
 
@@ -35,7 +36,11 @@ compile project(':ipsmap-release')
 ## 目前支持的cpu 架构 arm,暂时不支持其他架构,请配置下面的cpu架构
 ```
 ndk {
-            // 设置支持的 SO 库构架
+            // 必须设置cpu类型,设置支持的 SO 库构架,强烈建议仅仅支持'armeabi',
+            //如果添加全部平台的架构,包会变很大,市场面98% 都是armabi,如果想支持其他的cpu类型,请拷贝demo的跟根文件下的v7a
+            //和v8a 到App相应的的cpu文件,
+            //,默认仅仅支持'armeabi',不需要拷贝'armeabi',
+
             abiFilters 'armeabi'
 }
 ```
