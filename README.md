@@ -18,7 +18,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 
 建议使用marven 方式，两者选其中一种，如果全部添加，编译报资源重复的错误
 // marven
-compile ('com.ipsmap:ipsmap:1.4.2', {
+compile ('com.ipsmap:ipsmap:1.4.3', {
         exclude group: 'com.android.support'
     })
 
