@@ -72,7 +72,7 @@ ndk {
                  .debug(false)
                   //开启debug 后有log 日志,打正式版请务必关闭debug 日志
                   // 默认是false , 如果项目正式上线 debug 是false 
-                  //以下情况: debug 只能是 true 如果是开发人员给出的测试 mapid(在正式版道一循上不显示,道一循Bete 版的列表显示)
+                  //以下情况: debug 只能是 true 如果是开发人员给出的测试 mapid(在正式版道一循上不显示,道一循Beta 版的列表显示)
                 .build());
 
 
