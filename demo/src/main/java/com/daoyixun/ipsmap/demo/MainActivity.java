@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 //定位位置是否在map中
+                String nearLocationRegion = ipsLocation.getNearLocationRegion();
                 Toast.makeText(getApplicationContext(), ipsLocation.isInThisMap() + "", Toast.LENGTH_SHORT).show();
             }
         });

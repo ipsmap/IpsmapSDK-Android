@@ -69,7 +69,7 @@ ndk {
     IpsMapSDK.init(new IpsMapSDK.Configuration.Builder(context)
                 .appKey(Constants.IPSMAP_APP_KEY)
                 .shareToWechatListener(this)
-                //正式版请关闭 默认是关闭的
+                   // 默认是false , 如果项目正式上线 debug 是false ,如果是开发人员给出的测试 mapid(在正式版道一循上不显示,道一循Bete 版的列表显示), debug 只能是 true
                 .debug(false)
                 .build());
 
