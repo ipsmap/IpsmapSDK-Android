@@ -64,14 +64,11 @@ compile ('com.ipsmap:ips-location:0.4.4', {
 注意如果同时使用了ipsmap的导航模块,并且已经初始化导航模块,则不用初始化定位模块,ipsmap导航模块 已经对定位进行了初始化,
     IpsLocationSDK.init(new IpsLocationSDK.Configuration.Builder(this)
                 .appKey(Constants.IPSMAP_APP_KEY)
-                // 默认是false , 如果项目正式上线 debug 是false ,如果是开发人员给出的测试 mapid(在正式版道一循上不显示,道一循Bete 版的列表显示), debug 只能是 true
                 .debug(false)
-                .build());
-                
                 //开启debug 后有log 日志,打正式版请务必关闭debug 日志
-                //
-
-
+                // 默认是false , 如果项目正式上线 debug 是false 
+                //以下情况: debug 只能是 true 如果是开发人员给出的测试 mapid(在正式版道一循上不显示,道一循Bete 版的列表显示)
+                .build());
 ```
 
 ## 功能一  定位功能
