@@ -1,3 +1,3 @@
 <resources>
-    <string name="app_name">IpsmapSDK-Demo</string>
+    <string name="app_name" translatable="false">到易迅</string>
 </resources>
