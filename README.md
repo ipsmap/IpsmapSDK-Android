@@ -133,10 +133,28 @@ ipsClient.registerLocationListener(new IpsLocationListener() {
         return;
     }
     //是否在Map内
-    ipsLocation.isInThisMap()
-
+        ipsLocation.isInThisMap()
+        //是否在Map内
+        //定位位置是否在map中
+        String nearLocationRegion = ipsLocation.getNearLocationRegion();
+        boolean isError = TextUtils.isEmpty(ipsLocation.getFloor());
+        Double latitude = ipsLocation.getLatitude();
+        Double longitude = ipsLocation.getLongitude();
+    
+        if (!isError&&!(latitude==0.0)&&!(longitude==0.0)){
+    
+            // 进入这里面才是确认获取到定位,定位成功
+            Toast.makeText(getApplicationContext(), "isError "+!isError+ "latitude "+(!(latitude==0.0))+
+                    "  longitude "+(!(latitude==0.0))+
+                    "  ipsLocation"+ipsLocation.toString()+ "", Toast.LENGTH_LONG).show();
+        }else {
+            // 定位失败
+            T.showLong("不在医院内!!");
+        }
     }
 });
+
+ // 请不要频繁调用此方法,比较耗性能
 ipsClient.start();
 ```
 
