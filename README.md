@@ -154,7 +154,7 @@ ipsClient.registerLocationListener(new IpsLocationListener() {
     }
 });
 
- // 请不要频繁调用此方法,比较耗性能
+ // 请不要频繁调用此方法,比较耗性能,出现 ANR 尝试在子线程调用
 ipsClient.start();
 ```
 
