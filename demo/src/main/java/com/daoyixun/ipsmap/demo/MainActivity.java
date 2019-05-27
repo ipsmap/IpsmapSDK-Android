@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,6 +17,8 @@ import com.daoyixun.location.ipsmap.IpsClient;
 import com.daoyixun.location.ipsmap.IpsLocation;
 import com.daoyixun.location.ipsmap.IpsLocationListener;
 import com.daoyixun.location.ipsmap.utils.IpsConstants;
+import com.daoyixun.location.ipsmap.utils.L;
+import com.daoyixun.location.ipsmap.utils.T;
 import com.tencent.mm.opensdk.modelbiz.WXLaunchMiniProgram;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = MainActivity.this;
         ipsClient = new IpsClient(MainActivity.this, Constants.IPSMAP_MAP_ID);
+
         ipsClient.registerLocationListener(new IpsLocationListener() {
             @Override
             public void onReceiveLocation(IpsLocation ipsLocation) {
@@ -45,7 +49,22 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //定位位置是否在map中
                 String nearLocationRegion = ipsLocation.getNearLocationRegion();
-                Toast.makeText(getApplicationContext(), ipsLocation.isInThisMap() + "", Toast.LENGTH_SHORT).show();
+                boolean isError = TextUtils.isEmpty(ipsLocation.getFloor());
+                Double latitude = ipsLocation.getLatitude();
+                Double longitude = ipsLocation.getLongitude();
+
+                if (!isError&&!(latitude==0.0)&&!(longitude==0.0)){
+
+                    // 进入这里面才是确认获取到定位,定位成功
+                    Toast.makeText(getApplicationContext(), "isError "+!isError+ "latitude "+(!(latitude==0.0))+
+                            "  longitude "+(!(latitude==0.0))+
+                            "  ipsLocation"+ipsLocation.toString()+ "", Toast.LENGTH_LONG).show();
+                }else {
+                    // 定位失败
+                    T.showLong("不在医院内!!");
+                }
+                L.e("dddd","ipsLocation"+ipsLocation.toString());
+
             }
         });
 
@@ -85,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case REQUEST_LOCATION:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // 请不要频繁调用此方法,比较耗性能
                     ipsClient.start();
                 } else {
                     Toast.makeText(MainActivity.this, "请授予权限", Toast.LENGTH_SHORT).show();

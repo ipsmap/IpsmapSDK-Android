@@ -1,1 +1,1 @@
-include ':demo', ':ipsmap-release', ':ips-location-release'
+include ':demo', ':ipsmap-release', ':ips-location-release',':ipslocation'

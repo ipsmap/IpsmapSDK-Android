@@ -22,7 +22,7 @@ public class App extends Application implements ShareToWechatListener{
                 .appKey(Constants.IPSMAP_APP_KEY)
 //                .shareToWechatListener(this)
                 //正式版请关闭
-//                .debug(false)
+                .debug(true)
                 .build());
     }
 
