@@ -83,6 +83,7 @@ ipsClient.registerLocationListener(new IpsLocationListener() {
     public void onReceiveLocation(IpsLocation ipsLocation){
     if(ipsLocation == null){
         //定位失败;
+        T.showLong("定位失败!!");
         return;
     }
     //是否在Map内
