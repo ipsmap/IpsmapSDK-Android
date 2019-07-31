@@ -60,7 +60,7 @@ ndk {
 ## 使用
 初始化
 
-在Application 的onCreate 方法中进行初始化
+在Application 的onCreate 方法中进行初始化(特别注意应用有推送功能的时候,要仅仅初始化一次,第三代推送用的多服务包活机制,会启动多次 application)
 ``` 
   使用默认配置信息
     IpsMapSDK.init(context, IPSMAP_APP_KEY);
