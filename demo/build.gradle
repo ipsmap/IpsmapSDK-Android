@@ -14,7 +14,7 @@ android {
         ndk {
             // 设置支持的 SO 库构架
             abiFilters 'armeabi'
-            
+
         }
 //        flavorDimensions "demo"
     }
@@ -54,8 +54,8 @@ dependencies {
     // 调用起微信必须要的引用
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
-//    // 接入Marven 的方式
-    compile 'com.ipsmap:ipsmap:1.4.5'
+    // 接入Marven 的方式
+    compile 'com.ipsmap:ipsmap:1.4.8'
 
     // 接入aar 的方式
 //    compile project(':ips-location-release')
