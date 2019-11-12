@@ -226,4 +226,13 @@ app如果使用了okhttp ,glide ...出现第三发开源库 冲突
      }
 ```
 
+4.0 
+java.lang.NoClassDefFoundError: Failed resolution of: Lorg/apache/http/impl/client/DefaultHttpClient
+
+华为MATE 10 PRO机型安装APP后闪退，其他机型暂无发现，出现上面的错误信息，是引用的第三方SDK出现的，解决方法：在manifest.xml文件中的application节点下添加
+
+<uses-library android:name="org.apache.http.legacy" android:required="false"/>
+————————————————
+版权声明：本文为CSDN博主「mxy19891106」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/mxy19891106/article/details/89638064
 
