@@ -5,6 +5,6 @@
 /build/*
 /captures
 .externalNativeBuild
-/local.properties
+local.properties
 
 src/main/res/drawable/
