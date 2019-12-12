@@ -22,7 +22,7 @@ IpsmapSDK-Android 是一套基于 Android 4.3 及以上版本的室内地图应�
 
 ## 获取key
 从http://ipsmap.oss-cn-shanghai.aliyuncs.com/%E9%81%93%E4%B8%80%E5%BE%AA%E5%8C%BB%E9%99%A2%E5%AE%A4%E5%86%85%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F%E5%BA%94%E7%94%A8%E6%8E%A5%E5%85%A5%E7%94%B3%E8%AF%B7%E8%A1%A8%EF%BC%8820180330%EF%BC%89.xlsx
-下载表格填写后发送到  dev@ipsmap.com  ,工作人员回复
+下载表格填写后发送到 office@ipsmap.com ,工作人员回复
 
 ## 添加依赖
 
