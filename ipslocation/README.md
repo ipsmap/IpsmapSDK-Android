@@ -5,6 +5,19 @@
 [![API](https://img.shields.io/badge/API-18%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=18)
 [![Contact](https://img.shields.io/badge/Author-IpsMap-orange.svg?style=flat)](http://ipsmap.com)
 
+
+## 最新通知
+
+```
+请各位对接方尽快更新最新的0.5.0,请尽快强制更新
+1.去除统计功能
+2.优化对 9.0 的兼容性
+3.优化对初始化的过程
+4.性能优化
+5.用户体验更佳,请尽快强制更新
+
+```
+
 Ipslocation-Android 是一套基于 Android 4.3 及以上版本的室内地图应用程序开发接口，供开发者在自己的Android应用中加入室内地图相关的功能，包括：获取当前位置等功能。
 
 ## 获取AppKey和MapId
