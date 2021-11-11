@@ -7,6 +7,12 @@
 
 
 ## 最新通知
+```
+道一循室内导航SDK隐私保护指引 隐私声明在线地址：https://www.ipsmap.com/ipsmap-privacy.html
+道一循室内导航SDK软件许可及服务协议  软件许可在线地址： https://www.ipsmap.com/ipsmap-protection.html
+
+```
+
 
 ```
 请各位对接方尽快更新最新的1.5.0,请尽快强制更新
